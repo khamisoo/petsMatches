@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+
+<body class="inboxBody" style="background-color: #ffbdc5;
+background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');">
+  <div style="position:relative;bottom:19px; background-color:#ff4c68; width:100%; ">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="/"> <img style="zoom:60%;" class="brand" src="/css/images/blob.png" /></a>
+      <div class="userTools">
+        <ul class="ul-findP" style="position:relative;left:190px;">
+          <li class="nav-item">
+            <a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
+          </li>
+          <li class="nav-item">
+            <a style="  color: #231955;" href="/find">Find</a>
+          </li>
+          <li class="nav-item">
+            <a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="content-wrapper" style="position:relative;bottom:150px;">
+      <!-- Content Place Here -->
+      <div class="email-app card-margin">
+        <div class="email-toolbars-wrapper">
+
+          <div class="toolbar-body">
+
+            <div class="contact-header">
+              <div class="contact-left">
+                <h5 class="title">Followings Mails </h5>
+                <span style="font-size:15px; font-weight:bold; color:blue;" class="badge badge-sb-success"> ( <%= buddies.length %> )</span>
+              </div>
+
+            </div>
+
+            <ul class="contact-list">
+              <%  inbox.forEach(function(row,indexMail){  %>
+              <%  buddies.forEach(function(chatBuddies,indexUser){  %>
+              <%  if ( row.inbox.creator.sender_User_Id === chatBuddies.login_userDB_id ) {  %>
+
+              <div class="dropdown" style="position:relative;left:70px; top:50px;">
+                <button class="btn btn-sm btn-flash-primary" type="button" id="product-action-pane" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical toolbar-icon">
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <circle cx="12" cy="5" r="1"></circle>
+                    <circle cx="12" cy="19" r="1"></circle>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-item "><span class="dropdown-title">Action Pane</span></li>
+                  <li id="deleteList" class="dropdown-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer">
+                      <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                      <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span class="ks-text"><button type="submit" name="deleteConversition" value="<%= user.login_userDB_id %><%= chatBuddies.login_userDB_id %>" class="delete"> Delete Conversition </button> </span>
+
+                  </li>
+
+                  <li class="dropdown-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span class="ks-text"><button type="submit" name="unfollow" value="<%= chatBuddies.login_userDB_id %>" class="unFollow "> unFollow </button>
+                    </span>
+                  </li>
+
+                </ul>
+              </div>
+              <li class="contact-list-item">
+
+                <a class="disabled" href="http://localhost:3000/mail/<%=chatBuddies.login_userDB_id %>?category=Dogs&&userdbid=<%= chatBuddies._id %>&&name=<%=chatBuddies.fullName %>&&adspic=62dd7221523a5d09ff8377a6 ">
+                  <span class="pro-pic">
+                    <img class="circle-img-inbox" src="/<%=chatBuddies.Photo_URL %> " <%=chatBuddies.img.contentType %> ;base64, alt="">
+                    <%  if (row.inbox.creator.sender_User_Id === chatBuddies.login_userDB_id ) {  %>
+
+                    <%  if( row  === null ){ %>
+                      <i class="inactive">&nbsp;</i>
+                    <% } else if( row.inbox.creator.online  === 1 ){ %>
+                      <i class="active">&nbsp;</i>
+                        <span style=" color:blue; font-weight:bolder; ">(Online)</span>
+                    </span>
+                    <% } else if (  row.inbox.creator.online === 2){ %>
+                      <i  class="inactive">&nbsp;</i>
+                      <span style=" color:red; font-weight:bolder; ">(Offline)</span>
+                    </span>
+                    <% }else{%>
+                      <i  class="inactive">&nbsp;</i>
+                    <%  } %>
+                    <p style="position:relative;left:15px; top:8px;" class="user-name"> <%=  chatBuddies.fullName %></p>
+                  </span>
+
+                  <div class="user">
+                    <p class="user-designation"><%= row.inbox.reciver.created_at%></p>
+                  </div>
+                </a>
+              </li>
+              <%  }  %>
+              <%  }  %>
+
+              <%});%>
+              <%});%>
+            </ul>
+          </div>
+        </div>
+
+
+
+        <div class="email-list-wrapper">
+          <div id="email-app-body" class="email-list-scroll-container ps ps--active-y">
+            <ul class="email-list">
+              <%  inbox.forEach(function(row,indexMail){  %>
+              <%  buddies.forEach(function(chatBuddies,indexUser){  %>
+
+              <%  if (row.inbox.creator.sender_User_Id === chatBuddies.login_userDB_id ) {  %>
+              <li class="email-list-item">
+                <div class="recipient">
+
+                  <img class="circle-img-inbox" src="/<%=chatBuddies.Photo_URL %> " <%=chatBuddies.img.contentType %> ;base64, alt=""> <i class="inactive">&nbsp;</i>
+                  <a href="#" class="recipient-name"><%=chatBuddies.fullName %></a>
+                </div>
+                <a href="#" class="email-subject"> <%=row.inbox.reciver.messageReciver%> <i class="starred"> </i></a>
+                <div class="email-footer">
+                  <div class="email-action">
+                    <a href="#" class="important">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark fill">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </a>
+                    <a href="#" class="starred">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <%    }  %>
+              <%});%>
+              <%});%>
+
+            </ul>
+            <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+              <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+            </div>
+            <div class="ps__rail-y" style="top: 0px; height: 911px; right: 0px;">
+              <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 772px;"></div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="email-desc-wrapper" style="margin:0px; padding:0px; width: 100%; border-top-style:none;">
+
+          <iframe id="iframe" class="frameInbox" src="http://localhost:3000/mail/62dd71ce523a5d09ff83778f?category=Dogs&&userdbid=62dd71fc523a5d09ff83779c&&name=Mohamed%20Aly&&adspic=62dd7221523a5d09ff8377a6" width="100%" height="100%"></iframe>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(".delete").click(async (mood) => {
+      console.log("clicked");
+      var param = mood.delegateTarget.value;
+      console.log(param);
+      var url = "http://localhost:3000/inbox/" + param;
+      var myHeaders = new Headers();
+      myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
+      var urlencoded = new URLSearchParams();
+      var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+      fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+      location.reload();
+
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    $(".unFollow").click(async (on) => {
+      var param = on.delegateTarget.value;
+      console.log(param);
+      var url = "http://localhost:3000/inbox/" + param;
+      var myHeaders = new Headers();
+      myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
+      var urlencoded = new URLSearchParams();
+      var requestOptions = {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+      fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+      location.reload();
+
+    });
+
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    $(".contact-list-item").click(async (when) => {
+      console.log("contact is clicked ");
+      console.log(when.delegateTarget.childNodes);
+      var newlocation = when.delegateTarget.childNodes[1].href;
+      $('#iframe').attr('src', newlocation)
+    });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*  $(".email-subject").click(async (is) => {
+      console.log("msgs is clicked");
+      $('#iframe').attr('src', newlocation)
+    });
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <section style="margin-bottom:0px;" class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="/find"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/find">FindPets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/addpets">AddPets</a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h2> Edit your Profile </h2>
+
+  </section>
+
+  <div class="container-fluid" style="background-color: #ff4c68;
+  background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');">
+
+
+    <div class="col-sm-1" style="margin-bottom:100px;">
+      <% if (tableData.length>0){ %>
+      <%  tableData.forEach(function(profileData){  %>
+      <img style="width:200px; height:200px;" class="circle-imgUser" src="/<%=profileData.Photo_URL%>" <%=profileData.img.contentType%>;base64,>
+
+
+      <%});%>
+      <%}%>
+  </div>
+<div style="position:relative; top:40px;">
+  <button class="btnCard" type="button" name="button"><a href="/resetpass">Reset password</a></button>
+  <button class="btnCard" type="button" name="button"><a href="/deleteacc">Delete My Account</a></button>
+
+</div>
+
+  <div class="row">
+
+    <div class="col-sm-5">
+      <table id="editpd" class="myTable" style="margin-bottom:0px; display:block;">
+     <thead>
+       <tr>
+         <th>Full Name</th>
+         <th>Date Of Birth</th>
+         <th>Phone</th>
+
+         <th>UpDate</th>
+       </tr>
+     </thead>
+     <tbody id="tBody">
+       <% if (tableData.length>0){ %>
+      <%  tableData.forEach(function(row){  %>
+      <tr>
+        <form class="" action="/editpd/<%=row.login_userDB_id%>" method="post" id="tableForm-<%= row._id %>">
+          <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedName" value="<%= row.fullName %>" disabled></td>
+          <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedAge" value="<%= row.dateOfBirth %>" disabled></td>
+          <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedNumber" value="<%= row.phone %>" disabled></td>
+          <td> <button type="submit " name="updateId" value="<%= row._id %>" class="upDate btnCard" data-fid="tableForm-<%= row._id %>" form="tableForm-<%= row._id %>"> upDate </button> </td>
+        </form>
+      </tr>
+      <%})}else{%>
+      <tr>
+        <td colspan="6">No Record Found</td>
+      </tr>
+      <% } %>
+      </tbody>
+      <script type="text/javascript">
+        var flagIsEdited = false;
+        function updateOne() {
+          $('.upDate').click(function(event) {
+            if (!flagIsEdited) {
+              event.preventDefault();
+              $('.inputDisabled').prop("disabled", false);
+              flagIsEdited = true;
+              $("#submitUpdat").css("display", "block")
+            }
+          });
+        }
+        updateOne();
+      </script>
+      </table>
+    </div>
+  </div>
+  <footer class="white-section" id="footer" style="background-color: #ff4c68;
+  background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 EgyDog</p>
+  </footer>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

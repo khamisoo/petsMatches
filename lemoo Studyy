@@ -1,0 +1,19 @@
+
+if (VARIABLE OPERATOR VARIABLE && VARIABLE OPERATOR VARIABLE || VARIABLE OPERATOR VARIABLE)
+
+VAR X = 15;
+VAR Y = 22;
+
+IF (X === 15 ) {
+1 . 2 3
+}
+
+IF (Y == 22) {
+1 . 2 . 3
+}
+
+IF (Y == 22 && X) {
+true: IF X NOT 0
+AND
+Y = 22
+}

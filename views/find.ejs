@@ -1,0 +1,256 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body style=" background-color:#ff4c68;">
+  <div style=" background-color:#ff4c68; width:100rem; margin-top:0px;" class="container">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark blue lighten-1">
+      <a class="navbar-brand" href="/"> <img style="zoom:70%; position:relative;right:190px;" class="brand" src="/css/images/blob.png" /></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-5" aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-5">
+
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+
+          <li class="nav-item avatar dropdown">
+            <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+              <span class="badge badge-danger ml-2"> <%= flags.length %> </span>
+              <i class="fas fa-bell"></i>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+              <%  flags.forEach( (ok,inok) =>{    %>
+              <%  if(ok.type === "message")  {  %>
+
+              <a class="dropdown-item waves-effect waves-light clicked" href="/user/<%= paramID %>">
+                <span class="badge badge-danger ml-2">
+                  <span style="font-weight:bolder; color:black;">you have a new ( <%=  ok.type  %> ) check your inbox and enjoy our community </span> <br>
+                  <span class="badge badge ml-2">
+                    >> <%= ok.name  %>
+                  </span>
+                  <input type="hidden" name="reciver" value="<%= ok._id %>" class="the_boss">
+
+                </span> <br>
+                <span class="badge badge-danger ml-2">
+                  At : <%=  ok.created_at  %>
+                </span>
+              </a>
+
+
+              <%  }else if(ok.type === "follow"){ %>
+
+              <a class="dropdown-item waves-effect waves-light clicked" href="http://localhost:3000/visit/<%= ok.eventCreator %>">
+                <span class="badge badge-danger ml-2">
+                  <span style="font-weight:bolder; color:black;">Hey ! you have a <%=ok.type%> tap and view his profile</span> <br>
+                  <span class="badge badge ml-2">
+                    from : (<%= ok.name %>)
+                  </span>
+                  <input type="hidden" name="reciver" value="<%= ok._id %>" class="the_boss">
+                </span>
+                <br>
+                <span class="badge badge-danger ml-2">
+                  At : <%=  ok.created_at  %>
+                </span>
+              </a>
+              <%    } %>
+              <%     });   %>
+
+            </div>
+
+
+
+          </li>
+
+          <li class="nav-item">
+            <a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
+          </li>
+          <li class="nav-item">
+            <a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a>
+
+          </li>
+          <li class="nav-item">
+            <a style="  color: #231955;" class="nav-link" href="/user/<%= paramID %>">Profile</a>
+
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+    <div class="searchForm" id="search">
+      <form style="margin:0px; position:relative;bottom:150px;" id="searchForm" action="" method="post">
+        <div>
+          <input class="searchInput" list="searchCategory" name="searchCategory" placeholder="Search By Category" id="searchValue" />
+          <datalist id="searchCategory">
+            <option value="Dogs">
+            <option value="Cats">
+            <option value="Birds">
+            <option value="Reptiles">
+            <option value="Fish">
+            <option value="Rabbits">
+            <option value="Poultry">
+            <option value="Hamsters">
+            <option value="Ferrets">
+            <option value="Horses">
+          </datalist>
+        </div>
+        <button class="btnCard" type="submit" name="button" id="submitSearch"> Search </button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <section style="background-color: #ff4c68;
+  background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');   position:relative;bottom:40px;">
+
+
+    <div class="row">
+
+      <% usersDb.forEach(function(user,userIndex) { %>
+      <% petDb.forEach(function(data,petIndex) { %>
+      <% petPicsDb.forEach(function(image,imgIndex) { %>
+      <% matches.forEach(function(follower,followerIndex) { %>
+      <% if ((usersDb.length >0) && (petDb.length >0 ) && (petPicsDb.length>0 )) { %>
+      <% if ((user.login_userDB_id === data.userID && image.user_db_id === data.userID &&user.login_userDB_id===image.user_db_id )) { %>
+      <% if (data.petPic_Link === image.imageLink){ %>
+
+      <div class="col-sm-4">
+        <div class="cardV">
+          <div class="top">
+            <h2 class="name"><%=user.fullName%></h2>
+            <img class="circle-img" src="<%=user.Photo_URL%>" <%=user.img.contentType%>;base64,>
+          </div>
+          <div class="bottom">
+            <div class="info">
+              <!--    <p class="cardinfo1"><span>Phone Number :</span><%=user.phone%></p> -->
+              <!--    <p class="cardinfo1"><span>Email :</span><%=user.email%></p>   -->
+              <% if (user.login_userDB_id === follower.personDb_id.trim() ) { %>
+              <p class="cardinfo1"><span>Matches By :</span> <%=follower.followers_user.length%></p>
+              <% } %>
+
+            </div>
+            <div class="info">
+              <p class="cardinfo1"><span>Pet Category :</span><%=data.category%></p>
+              <img class="petsImg" src="<%=data.petPic_Link%>" <%=image.img.contentType%>;base64,>
+              <p class="cardinfo1"><span>Special Marks :</span><%=data.SpecialMarks%></p>
+              <p class="cardinfo1"><span>Pets Health :</span><%=data.Health%></p>
+
+              <p class="cardinfo1"><span> Location :</span><%=user.governorate_name%> / <%=user.city_name%> </p>
+              <table>
+                <tr>
+                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/visit/<%= data.userID %>">Profile</a> </button>
+
+                </tr>
+                <tr>
+                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;"
+                      href="http://localhost:3000/mail/<%= user.login_userDB_id %>?category=<%=data.category%>&&userdbid=<%=user._id%>&&name=<%=user.fullName%>&&adspic=<%=image._id%>">Matches</a> </button>
+
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+      <% } %>
+
+      <% }); %>
+      <% }); %>
+      <% }); %>
+      <% }); %>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script type="text/javascript">
+
+        $("#submitSearch").click(function(event) {
+          event.preventDefault();
+          var param = $("#searchValue").val();
+          window.location.replace("http://localhost:3000/searchresult/" + param);
+        });
+
+
+
+        $(".clicked ").click((event) => {
+          console.log("clicked");
+          event.preventDefault(); // prevent the browser from focusing the Notification's tab
+          var get = event.delegateTarget.href;
+
+          checkIf = event.delegateTarget.firstElementChild.childNodes[7].value;
+          console.log(event.delegateTarget.firstElementChild.childNodes);
+
+          var myHeaders = new Headers();
+          myHeaders.append("Cookie", "connect.sid=s%3AznAPR-Fnf4HgIbfypTolAEIO3ZWQ2L_D.fGTtSLtucgvqpFkfcCN%2Bo0tFWBGgqLbkA0wH4RUkeHo");
+
+          var urlencoded = new URLSearchParams();
+
+          var requestOptions = {
+            method: 'PATCH',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("http://localhost:3000/notefy/" + checkIf, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+
+          setInterval(function() {
+            var myHeaders = new Headers();
+            myHeaders.append("Cookie", "connect.sid=s%3AxP4J05nqPXEgeYl0iNk2qtIrQfTZ2FKv.23ej4ULkLLQ81kAxA7c%2FmPE61UMld39j2CSDT7hK6KU");
+
+            var urlencoded = new URLSearchParams();
+
+            var requestOptions = {
+              method: 'DELETE',
+              headers: myHeaders,
+              body: urlencoded,
+              redirect: 'follow'
+            };
+
+            fetch("http://localhost:3000/notefy/" + checkIf, requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+          }, 3000);
+
+
+          window.open(get, '_blank');
+
+
+        });
+      </script>
+
+
+
+
+    </div>
+  </section>
+</body>

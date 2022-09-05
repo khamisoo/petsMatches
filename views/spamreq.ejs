@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+  <section style="margin-bottom:0px;" class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="/"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
+
+      </nav>
+
+      <h2> we are Very sory if something went wrong .. !</h2>
+      <div class="row">
+
+        <div class="col-sm-5">
+
+          <form action="/spamreq/<%=param%> " method="POST"  autocomplete="off">
+
+              <div class="form-group">
+                <input list="citiesUserList" name="spamReason" placeholder="Spam Reason" class="form-control profForm" required />
+                <datalist id="citiesUserList">
+                  <option value="Bad Behavior">
+                    <option value="Fake Account">
+                      <option value="others">
+                </datalist>
+              </div>
+              <textarea  style="margin-top:50px;" placeholder="if u want explain someTing else ,, type here ..." style="border-style: none;" type="text" class="form-control" name="spamExplain" rows="3" cols="90" value="" id="msgs"></textarea>
+
+              <div class="form-group">
+                <button style="margin-top:50px;" type="submit" class="btn btn-dark"> <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>SuBmiT</button>
+              </div>
+              </form>
+
+
+
+
+        </div>
+        <div class="col-sm-7">
+          <img class="picSize" src="/css/images/iconofSpam-png-image_1766126.jpg" alt="Profile-pets">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <footer class="white-section" id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 EgyDog</p>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+  <script type="text/javascript">
+
+
+
+  </script>
+
+
+  </body>
+</html>

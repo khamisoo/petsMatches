@@ -1,0 +1,166 @@
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <section style="margin-bottom:0px;" class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="/find"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/find">FindPets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/addpets">AddPets</a>
+
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h2> Edit your Ads </h2>
+
+  </section>
+    <div class="container-fluid" style="background-color: #ff4c68;
+    background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');">
+
+      <div class="row">
+
+        <div class="col-sm-5">
+          <table id="myTable" class="myTable" style="margin-top:5px;">
+            <thead>
+              <tr>
+                <th>Img</th>
+                <th>Category</th>
+                <th>Age</th>
+                <th>Health</th>
+                <th>Markes</th>
+
+                <th>UpDate</th>
+                <th>DELET</th>
+              </tr>
+            </thead>
+            <tbody id="tBody">
+              <% if (tableData.length>0){ %>
+              <%  tableData.forEach(function(row,indexPet){  %>
+              <%  img.forEach(function(pic,indexPic){  %>
+              <% if (row.userID === pic.user_db_id){ %>
+              <% if (row.petPic_Link === pic.imageLink){ %>
+
+              <tr>
+                <form class="" action="/editads/<%=row.userID%>" method="post" id="tableForm-<%= row._id %>">
+                  <td> <img class="circle-img" src="/<%=row.petPic_Link%>" <%=pic.contentType%>;base64,></td>
+                  <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedCategory" value="<%= row.category %>" disabled></td>
+                  <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedAge" value="<%= row.age %>" disabled></td>
+                  <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedHealth" value="<%= row.Health %>" disabled></td>
+                  <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedMarkes" value="<%= row.SpecialMarks %>" disabled></td>
+                  <td> <button type="submit" name="updateId" value="<%= row._id %>" class="upDate btnCard" data-fid="tableForm-<%= row._id %>" form="tableForm-<%= row._id %>"> upDate </button> </td>
+                </form>
+                <td> <button type="submit" name="deleteSelected" value="<%= row._id %>" class="delete btnCard">Delete <input type="hidden" id="custId" name="custId" value="<%= row.petPic_Link %>"> </button> </td>
+              </tr>
+              <% }%>
+              <% }%>
+
+              <% });%>
+              <%});}else{%>
+              <tr>
+                <td colspan="6">No Record Found</td>
+              </tr>
+              <% } %>
+            </tbody>
+            <script type="text/javascript">
+              var flagIsEdited = false;
+
+              function updateOne() {
+                var upVal = $('.upDate').val();
+                $('.upDate').click(function(event) {
+                  console.log(upVal);
+
+                  if (!flagIsEdited) {
+                    event.preventDefault();
+                    $('.inputDisabled').prop("disabled", false);
+                    flagIsEdited = true;
+                    $("#submitUpdat").css("display", "block")
+                  }
+
+                });
+              }
+              updateOne();
+
+              function deleteIt() {
+                $('.delete').click(function(event) {
+                  var key = $('.delete').val();
+                  var imglink = $("#custId").val();
+                  //console.log(imglink);
+
+                  var settings = {
+                    "url": "http://localhost:3000/editads/" + key,
+                    "method": "DELETE",
+                  };
+                  $.ajax(settings).done(function(response) {
+                    //  console.log(response);
+                    window.location.replace("http://localhost:3000/editads/" + key + "?&&path=" + imglink);
+                  });
+                });
+              }
+              deleteIt();
+            </script>
+            <div id="deletAll">
+            </div>
+          </table>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="white-section" id="footer" style="background-color: #ff4c68;
+    background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');">
+      <div class="container-fluid">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2022 EgyDog</p>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

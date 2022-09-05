@@ -1,0 +1,6 @@
+30- make search by location && in card view city 
+18- delete And ubdate Photo in users and ads 
+21 - make deskTop shortCut for mobile  >> option 
+    >>>>>>> ads number /// following number /// 
+28 - Make rate us page >>> 
+31 - make check photoo of ads before render in page 

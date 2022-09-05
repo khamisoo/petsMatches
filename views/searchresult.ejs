@@ -1,0 +1,95 @@
+
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+ <body>
+   <div style="background-color:#ff4c68;">
+     <nav class="navbar navbar-expand-lg navbar-dark">
+       <a class="navbar-brand" href="/"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
+       <div class="userTools">
+         <ul class="ul-findP">
+           <li class="nav-item">
+             <a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
+           </li>
+           <li class="nav-item">
+             <a style="  color: #231955;" href="/find">Find</a>
+           </li>
+           <li class="nav-item">
+             <a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a>
+           </li>
+         </ul>
+       </div>
+     </nav>
+   </div>
+  <section style="background-color: #ff4c68;
+  background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');   position:relative;bottom:40px;">
+
+    <div class="row">
+      <% for(i=0; usersDb.length>i; i++) { %>
+        <% for(k=0; petDb.length>k; k++) { %>
+          <% for(h=0; petPicsDb.length>h; h++) { %>
+      <% if ( (petDb.length >0 ) && (petPicsDb.length>0 )) { %>
+        <% if ((usersDb[i].login_userDB_id === petDb[k].userID && petPicsDb[h].user_db_id === petDb[k].userID &&usersDb[i].login_userDB_id===petPicsDb[h].user_db_id )) { %>
+          <% if (petDb[k].petPic_Link === petPicsDb[h].imageLink){ %>
+      <div class="col-sm-4">
+        <div class="cardV">
+          <div class="top">
+            <h2 class="name"><%=usersDb[i].fullName%></h2>
+            <img class="circle-img" src="/<%=usersDb[i].Photo_URL%>" <%=usersDb[i].img.contentType%>;base64,>
+          </div>
+          <div class="bottom">
+            <div class="info">
+              <p class="cardinfo1"><span>Phone Number :</span<%=usersDb[i].phone%></p>
+              <p class="cardinfo1"><span>Email :</span><%=usersDb[i].email%></p>
+            </div>
+            <div class="info">
+              <p class="cardinfo1"><span>Pet Category :</span><%=petDb[k].category%></p>
+              <img class="petsImg" src="/<%=petDb[k].petPic_Link%>" <%=petPicsDb[h].img.contentType%>;base64,>
+              <p class="cardinfo1"><span>Special Marks :</span><%=petDb[k].SpecialMarks%></p>
+              <p class="cardinfo1"><span> Location :</span><%=usersDb[i].governorate_name%></p>
+              <table>
+                <tr>
+                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/visit/<%= petDb[k].userID %>">Profile</a> </button>
+
+                </tr>
+                <tr>
+                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/mail/<%= usersDb[i].login_userDB_id %>?category=<%=petDb[k].category%>&&userdbid=<%= usersDb[i]._id%>&&name=<%= usersDb[i].fullName%>&&adspic=<%=petPicsDb[h]._id%>">Matches</a> </button>
+
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <% } %>
+      <% } %>
+      <% } %>
+      <% } %>
+      <% } %>
+
+
+    </div>
+  </section>
+</body>

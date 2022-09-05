@@ -1,0 +1,444 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+
+<body class="bodyMail">
+
+  <div class="container mailPage">
+    <div class="ks-page-content">
+      <div class="ks-page-content-body">
+        <div class="ks-messenger">
+          <div class="jspContainer" style="width: 339px; height: 550px; ">
+            <div class="jspPane" style="padding: 0px; top: 0px; width: 329px;">
+              <div class="cardV cardUser cardMail" style="position:absolute;top:5px;right:810px;">
+                <div class="top userCardTop">
+                  <img style="width:100%; position:relative;bottom:40px;" src="/css/images/blob.png">
+                  <!--
+                  <img class="circle-imgUser" src="/<%=user.Photo_URL%>" <%=user.img.contentType%>;base64,>
+
+                     -->
+
+                </div>
+                <div class="bottom bottomUser">
+
+                  <div class="info" style="width:100%; position:relative;bottom:90px;">
+                    <div class="ks-controls">
+                      <div class="dropdown">
+                        <button class="btn btn-primary-outline ks-light ks-no-text ks-no-arrow btnCard" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <span class="la la-ellipsis-h ks-icon">Tools</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right ks-simple" aria-labelledby="dropdownMenuButton">
+                          <span class="ks-text"> <button class="btnCard" type="button" name="button"><a style=" color: #231955; text-decoration:none" href="/user/<%= user.login_userDB_id %>"> profile </a></button></span>
+                          <span class="ks-text"> <button class="btnCard" type="button" name="button"><a style=" color: #231955; text-decoration:none" href="/find"> Matches More </a></button> </span>
+                          <span class="ks-text"> <button class="btnCard" type="button" name="button"><a style=" color: #231955; text-decoration:none" href="/addpets"> Add Pets </a></button> </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="" style="margin-top:100px; ">
+                    ADS AREA
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="jspVerticalBar">
+              <div class="jspCap jspCapTop"></div>
+              <div class="jspTrack" style="height: 550px;">
+                <div class="jspDrag" style="height: 261px;">
+                  <div class="jspDragTop"></div>
+                  <div class="jspDragBottom"></div>
+                </div>
+              </div>
+              <div class="jspCap jspCapBottom"></div>
+            </div>
+          </div>
+          <div id="chattingArea" class="ks-messages ks-messenger__messages">
+            <div class="ks-header">
+
+              <div class="ks-description">
+                <div class="ks-name">
+                  <table>
+                    <tr>
+                      <td><img class="circle-img" src="/<%=reciverAds.petPic_Link %> " <%=reciverImgs.img.data %> ;base64, alt=""></td>
+                      <td>
+                        <div class="ks-amount">
+                          <span class="spanMail">your chat about me !! , category of : </span><%=reciverAds.category %>
+
+                        </div>
+
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <div class="ks-controls">
+                <div class="dropdown">
+                  <button class="btn btn-primary-outline ks-light ks-no-text ks-no-arrow btnCard" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="la la-ellipsis-h ks-icon">Options</span>
+                  </button>
+
+                  <div class="dropdown-menu dropdown-menu-right ks-simple" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"> </a>
+                    <%   if (userChat != null){ %>
+                    <span class="la la-user-plus ks-icon"></span>
+                    <form class="" action="/follow/<%=reciverId%> " method="post">
+                      <input type="hidden" name="follower_person_DbId" value="<%=user.login_userDB_id %>">
+                      <input type="hidden" name="Person_followe_run" value=" <%= reciverdata.login_userDB_id %> ">
+                      <input type="hidden" name="person_run_petID" value=" <%= reciverAds._id %> ">
+                      <input type="hidden" name="chat_id_forFollower" value="<%= userChat._id %>">
+                      <input type="hidden" name="noteficationName" value="<%= user.fullName %>">
+
+                      <span class="ks-text"><button type="submit" name="followUser" value="<%= userChat._id %>" class="follow btnCard"> Follow </button> </span>
+                    </form>
+
+                    <a class="dropdown-item" href="#">
+                      <span class="la la-ban ks-icon"></span>
+                      <span class="ks-text"><button type="submit" name="requestSpam" value="<%= userChat._id %>" class="spamReq btnCard"> <a style="text-decoration:none; color:#231955;" href="/spamreq/<%= userChat._id %>"> Spam Request </a></button>
+                      </span>
+                    </a>
+
+                    <a class="dropdown-item" href="#">
+                      <span class="la la-trash-o ks-icon"></span>
+
+
+                      <span class="ks-text"><button type="submit" name="deleteConversition" value="<%= userChat._id %>" class="deleteConversition btnCard"> Delete Conversition </button> </span>
+
+                      <%   }else{%>
+                      <span></span>
+                      <% }%>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+            <div style="overflow-y: scroll;" class="ks-body ks-scrollable jspScrollable" data-auto-height="" data-reduce-height=".ks-footer" data-fix-height="32" style="height: 480px; overflow: hidden; padding: 0px; width: 701px;" tabindex="0">
+              <div class="jspContainer" style="width: 701px; height: 481px;">
+
+
+
+                <div class="jspPane" style="padding: 0px; top: 0px; width: 691px;">
+                  <ul class="ks-items viewIs" id="viewChat">
+                    <%   if (reciverRes != null){ %>
+                    <% reciverRes.inbox.reciver.messageReciver.forEach( (recive) => { %>
+                    <li class="ks-item ks-self">
+
+                      <input type="hidden" id="userInbox" value="<%=userChat%>">
+                      <input type="hidden" id="reciverInbox" value="<%=reciverRes%>">
+
+                      <span class="ks-avatar ks-offline">
+                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="/<%=reciverdata.Photo_URL %> " <%=reciverdata.img.contentType %> ;base64, alt="">
+                      </span>
+                      <div class="ks-body">
+                        <div class="ks-header">
+                          <span class="ks-name"> <%=reciverdata.fullName %></span>
+                          <span class="ks-datetime"> <%=reciverRes.inbox.reciver.created_at %> </span>
+                        </div>
+
+                        <div class="ks-message ">
+                          <p> <%=recive %> </p>
+                        </div>
+                      </div>
+                    </li>
+                    <% });  %>
+
+                    <%   }else{%>
+                    <div class="">
+
+                    </div>
+                    <% }%>
+
+
+                    <%   if (userChat != null){ %>
+
+                    <% userChat.inbox.creator.messageCreated.forEach( (creat) => { %>
+                    <li class="ks-item ks-from">
+                      <span class="ks-avatar ks-online">
+                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="/<%=user.Photo_URL %> " <%=user.img.contentType %> ;base64, alt="">
+                      </span>
+
+                      <div class="ks-body">
+                        <div class="ks-header">
+                          <span class="ks-name"><%=user.fullName %></span>
+                          <span class="ks-datetime"> <%=userChat.inbox.creator.created_at %> </span>
+                        </div>
+                        <div class="ks-message">
+                          <p> <%=creat %> </p>
+                        </div>
+                      </div>
+                    </li>
+                    <% });  %>
+                    <%   }else{%>
+                    <div class="">
+
+                    </div>
+                    <% }%>
+
+
+                  </ul>
+                </div>
+
+
+
+                <div class="jspVerticalBar">
+                  <div class="jspCap jspCapTop"></div>
+                  <div class="jspTrack" style="height: 481px;">
+                    <div class="jspDrag" style="height: 206px;">
+                      <div class="jspDragTop"></div>
+                      <div class="jspDragBottom"></div>
+                    </div>
+                  </div>
+                  <div class="jspCap jspCapBottom"></div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="ks-footer">
+              <form id="mails" class="mailForm ks-footer" action="/mail/<%=reciverId%>" method="post">
+                <textarea placeholder="type here ..." style="border-style: none;" type="text" class="form-control" name="messageContent" rows="3" cols="90" value="" id="msgs">
+                nice to meet you i wnnaa know more about your :<%=reciverAds.category %> , you also say that health is : <%=reciverAds.Health %> ,so please tell me more
+                about that and is SpecialMarks is : <%=reciverAds.SpecialMarks %>  .. </textarea>
+                <button class=" btnCard" type="submit" name="submitChat" value="<%=reciverdata.login_userDB_id%>" id="submitMessage">Send</button>
+              </form>
+            </div>
+
+          </div>
+
+
+          <div class="ks-info ks-messenger__info">
+
+            <div id="checkOnline" class="ks-header">
+              you Chatting with
+              <input type="hidden" name="" value="<%= user.login_userDB_id %>" id="currentUserID">
+              <%  if( reciverRes  === null ){ %>
+                        <span></span>
+              <% } else if( reciverRes.inbox.creator.online  === 1 ){ %>
+              <span style="color:blue; font-weight:bolder;">
+                (Online)
+              </span>
+              <% } else if (  reciverRes.inbox.creator.online === 2){ %>
+              <span style="color:red; font-weight:bolder;">
+                (offline)
+              </span>
+              <% }else{%>
+              <span>Not Updated</span>
+              <%  } %>
+            </div>
+            <div class="ks-body">
+
+              <div class="ks-item ks-user">
+                <span class="ks-avatar ks-online pro-pic">
+                  <img width="36" height="36" class=" circle-img" src="/<%=reciverdata.Photo_URL %> " <%=reciverdata.img.contentType %> ;base64, alt="">
+                </span>
+                <span class="ks-name">
+                  <%=reciverdata.city_name %>
+                </span>
+              </div>
+
+              <div class="ks-item">
+                <div class="ks-name">Username</div>
+                <div class="ks-text">
+                  <%=reciverdata.fullName %>
+                </div>
+              </div>
+
+              <div class="ks-item">
+                <div class="ks-name">Email</div>
+                <div class="ks-text">
+                  <%=reciverdata.email %>
+                </div>
+              </div>
+
+              <div class="ks-item">
+                <div class="ks-name">Phone Number</div>
+                <div class="ks-text">
+                  <%=reciverdata.phone %>
+                  <button class="btnCard" type="button" name="button"><a style=" color: #231955; text-decoration:none" href="/visit/<%= reciverdata.login_userDB_id %>"> view Profile </a></button>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="ks-footer">
+
+
+              <div class="ks-item">
+                <div class="ks-name">Conversition Start</div>
+                <%   if (userChat != null){ %>
+                <div class="ks-text">
+                  <%=userChat.inbox.creator.created_at %>
+                </div>
+                <%  }else{ %>
+                <div class="">
+
+                </div>
+                <%    } %>
+              </div>
+
+              <div class="ks-item">
+                <div class="ks-name"> </div>
+                <div class="ks-text">
+
+                  <p>© Copyright 2022 EgyDog</p>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+    let userReady = $("#userInbox").val();
+    let reciver = $("#reciverInbox").val();
+    if (userReady === "") {
+      $("#viewChat").html("<div> </div>")
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function hasNetwork(online) {
+      console.log(online);
+
+      if (online === true) {
+        var param = "isonline";
+      //  console.log(param);
+        let query = $("#currentUserID").val();
+      //  console.log(query);
+        var url = "http://localhost:3000/mail/" + param + "?theid=" + query;
+        var myHeaders = new Headers();
+        myHeaders.append("Cookie", "connect.sid=s%3AjG7gc440e_T2XpqdZ_Q7ZBUSKVIiNtw8.o4d2POYLsOML7PCz%2BtFIbdBz3sVL6nyJwhr%2F9CBHQDs");
+
+        var urlencoded = new URLSearchParams();
+
+        var requestOptions = {
+          method: 'Put',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
+
+        fetch(url, requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+
+      } else if (online === false) {
+        var param = "isoffline";
+      //  console.log(param);
+        let query = $("#currentUserID").val();
+      //  console.log(query);
+        var url = "http://localhost:3000/mail/" + param + "?theid=" + query;
+        var myHeaders = new Headers();
+        myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
+
+        var urlencoded = new URLSearchParams();
+
+        var requestOptions = {
+          method: 'Put',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
+
+        fetch(url, requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+
+      }
+
+    }
+
+
+    window.addEventListener("load", () => {
+      hasNetwork(navigator.onLine);
+      window.addEventListener("online", () => {
+        hasNetwork(true);
+      });
+      $(window).on('beforeunload', function() {
+        //your code goes here on location change
+        hasNetwork(false);
+
+      });
+
+    });
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    $(".deleteConversition").click((mood) => {
+      console.log("clicked");
+      var param = $(".deleteConversition").val();
+      //console.log(param);
+      var url = "http://localhost:3000/mail/" + param;
+      var myHeaders = new Headers();
+      myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
+
+      var urlencoded = new URLSearchParams();
+
+      var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow'
+      };
+
+      fetch(url, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var defultMsg = $("#msgs");
+    $(function() {
+      // setTimeout() function will be fired after page is loaded
+      // it will wait for 5 sec. and then will fire
+      // $("#successMessage").hide() function
+      setTimeout(function() {
+        defultMsg.val('', {}, 500)
+      }, 40000);
+    });
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  </script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    < /body> < /
+    html >

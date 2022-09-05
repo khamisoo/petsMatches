@@ -1,0 +1,245 @@
+<head>
+  <meta charset="utf-8">
+  <title>Egy Pets</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <!-- Btns ganerate  -->
+  <link rel="stylesheet" href="css/bootstrap-social.css">
+
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  </style>
+
+
+
+</head>
+
+
+<body>
+
+  <section style="margin-bottom:0px;" class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+      <!-- Nav Bar -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+
+        <a class="navbar-brand" href="/"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
+
+      </nav>
+
+      <h2> Continuing with your profile</h2>
+      <div class="row">
+
+        <div class="col-sm-5">
+
+          <form action="/profile" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <div class="form-group">
+              <input type="text" class="form-control profForm" name="userName" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control profForm" name="age" placeholder="Age" required>
+            </div>
+            <!-- <div class="form-group">
+              <input type="email" class="form-control profForm" name="userEmail" placeholder=" Email">
+            </div> -->
+            <div class="form-group">
+              <input type="number" class="form-control profForm" name="userNumber" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+              <p style="color:#fff;">Show my Number</p>
+              <label class="switch">
+
+                <input type="checkbox" id="myButton" name="numberValidation" value="NO" onclick="Buttontoggle();">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group">
+              <input type="hidden" id="govKey" name="custId" value="<%=paramID %>">
+              <input onchange="getData();" list="govurnementUserList" name="userGovurnement" placeholder="govurnement" class="form-control profForm" id="mastr" value="" required />
+              <datalist id="govurnementUserList">
+                <% govData.forEach((docs) => { %>
+                <option value="<%= docs.governorate_name_en %> " class="gi<%= docs.id %>" id=" ">
+                  <%  }); %>
+
+              </datalist>
+            </div>
+
+            <div class="form-group">
+              <input list="citiesUserList" name="userCity" placeholder="City" class="form-control profForm" required />
+              <datalist id="citiesUserList">
+                <option value="">
+              </datalist>
+            </div>
+            <div class="form-group">
+              <label for="image">Upload your Profile photo</label>
+              <input type="file" id="image" name="image" value="">
+            </div>
+            <div  class="tacbox" >
+              <input style="display:block;" type="checkbox" id="conditions" name="conditions" value="NO" onclick="acceptCondition();" />
+              <label for="checkbox"> I agree to these <a href="/termsandconditions">Terms and Conditions</a>.</label>
+            </div>
+            <div style="display:none;" class="form-group"  id="SubmitProfile"  >
+              <button  type="submit" class="btn btn-dark"> <i class="fa fa-chevron-circle-up" aria-hidden="true" ></i>SuBmiT</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-7">
+          <img class="picSize" src="/css/images/pets.png" alt="Profile-pets">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <footer class="white-section" id="footer">
+    <div class="container-fluid">
+      <i class="social-icon fab fa-facebook-f"></i>
+      <i class="social-icon fab fa-twitter"></i>
+      <i class="social-icon fab fa-instagram"></i>
+      <i class="social-icon fas fa-envelope"></i>
+      <p>© Copyright 2022 EgyDog</p>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+  <script type="text/javascript">
+    function getData() {
+      var apiKey = $("#govKey").val();;
+      //console.log(apiKey);
+      var chosenGov = $("#mastr").val()
+
+      var settings = {
+        "url": "http://localhost:3000/city/" + chosenGov,
+        "method": "GET",
+        "timeout": 0,
+
+      };
+
+      $.ajax(settings).done(function(response) {
+        //console.log(response);
+        for (i = 0; response.length > i; i++) {
+          let select = $("#citiesUserList");
+          let option = document.createElement("option");
+          option.value = response[i].city_name_en;
+          option.text = response[i].city_name_ar;
+          select.append(option);
+        }
+      });
+
+    }
+
+
+    function Buttontoggle() {
+      var toggle = document.getElementById("myButton");
+      if (toggle.value == "YES") {
+      toggle.value = "NO";
+      } else if (toggle.value == "NO") {
+      toggle.value = "YES";
+      }
+
+    }
+
+
+function acceptCondition () {
+
+  var accept = document.getElementById("conditions");
+
+  if (accept.value == "YES") {
+  accept.value = "NO";
+  } else if (accept.value == "NO") {
+  accept.value = "YES";
+
+
+  }
+
+let accepted =accept.value;
+ if(accepted === "YES"){
+  let submit =$(" #SubmitProfile ");
+  submit.css("display","block");
+  $("#conditions").css("display","none");
+}
+
+
+}
+
+
+
+
+  </script>
