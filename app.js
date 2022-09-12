@@ -41,7 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // --------------                             Data Base connection and plugin   ------------
-mongoose.connect("mongodb://localhost:27017/egyDogDB");
+mongoose.connect("mongodb+srv://admin-khamis:test123@cluster0.fx1mhof.mongodb.net/petsMatches");
 
 //--                                        --   FS setup with MULTER for UPloading ----------------
 
