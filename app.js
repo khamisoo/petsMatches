@@ -447,7 +447,6 @@ app.route("/city/:dataId")
 
 app.get("/find", function(req, res) {
   if (req.isAuthenticated()) {
-    //  console.log(req.ip);
     Person.find({}, (err, user) => {
       if (err) {
         console.log(err);
@@ -464,8 +463,14 @@ app.get("/find", function(req, res) {
                   reciver: req.user._id,
                   read: false
                 }, (err, notefy) => {
-                  //  console.log(notefy);
                   Follower.find({}, (err, followers) => {
+
+                    // console.log(user);
+                    // console.log(pets);
+                    // console.log(petPics);
+                    // console.log(notefy);
+                    // console.log(followers);
+
                     res.render("find", {
                       usersDb: user,
                       petDb: pets,
@@ -1461,7 +1466,7 @@ app.post("/login", function(req, res) {
 app.post('/profile', upload.single('image'), (req, res, next) => {
   function creatProfile() {
     req.params.Id = req.user._id;
-    console.log(req.file);
+  //  console.log(req.file);
     const userCheck = req.user;
     var method = "";
 
@@ -1569,7 +1574,7 @@ app.post('/addpets', upload.single('image'), (req, res, next) => {
       }
     });
   }
-  console.log(req.body);
+//  console.log(req.body);
   if (req.body.petsCategory.length > 30) {
     res.render("matcheshelp", {
       reason: "choose one of our category to have best experince in matches search engine ,,,  "
@@ -1743,7 +1748,7 @@ app.post("/follow/:followerId", (req, res) => {
 
 
 // -------------------------------------  SERVER listen -----------------------------------------------------
-
-app.listen("3000", function() {
+port = process.env.PORT||3000;
+app.listen(port, function() {
   console.log("server runinng in port 3000");
 });

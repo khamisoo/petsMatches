@@ -135,7 +135,6 @@
       <% usersDb.forEach(function(user,userIndex) { %>
       <% petDb.forEach(function(data,petIndex) { %>
       <% petPicsDb.forEach(function(image,imgIndex) { %>
-      <% matches.forEach(function(follower,followerIndex) { %>
       <% if ((usersDb.length >0) && (petDb.length >0 ) && (petPicsDb.length>0 )) { %>
       <% if ((user.login_userDB_id === data.userID && image.user_db_id === data.userID &&user.login_userDB_id===image.user_db_id )) { %>
       <% if (data.petPic_Link === image.imageLink){ %>
@@ -150,9 +149,12 @@
             <div class="info">
               <!--    <p class="cardinfo1"><span>Phone Number :</span><%=user.phone%></p> -->
               <!--    <p class="cardinfo1"><span>Email :</span><%=user.email%></p>   -->
+              <% matches.forEach(function(follower,followerIndex) { %>
+
               <% if (user.login_userDB_id === follower.personDb_id.trim() ) { %>
               <p class="cardinfo1"><span>Matches By :</span> <%=follower.followers_user.length%></p>
               <% } %>
+              <% }); %>
 
             </div>
             <div class="info">
@@ -181,7 +183,6 @@
       <% } %>
       <% } %>
 
-      <% }); %>
       <% }); %>
       <% }); %>
       <% }); %>
