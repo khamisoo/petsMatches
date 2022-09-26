@@ -1495,7 +1495,7 @@ app.post('/profile', upload.single('image'), (req, res, next) => {
         imageID: req.file.size + req.file.filename,
         ImageLink: req.file.path
       },
-      Photo_URL: req.body.avatar_url, //{/uploades/soertelbaniadamelgamedneek.png}
+      Photo_URL: req.file.path, //{/uploades/soertelbaniadamelgamedneek.png}
       facebookID: userCheck.facebookId,
       GoogleID: userCheck.googleId,
 
@@ -1537,7 +1537,7 @@ app.post('/addpets', upload.single('image'), (req, res, next) => {
     var obj = {
       name: req.body.petsCategory,
       user_db_id: userCheck._id,
-      imageLink: req.body.avatar_url,
+      imageLink: req.file.path,
       img: {
         data: toString(fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))),
       }
