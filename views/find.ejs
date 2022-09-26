@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Egy Pets</title>
+  <title>petsmatches</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -166,12 +166,12 @@
               <p class="cardinfo1"><span> Location :</span><%=user.governorate_name%> / <%=user.city_name%> </p>
               <table>
                 <tr>
-                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;" href="http://petsmatches.com/visit/<%= data.userID %>">Profile</a> </button>
+                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;" href="https://petsmatches.com/visit/<%= data.userID %>">Profile</a> </button>
 
                 </tr>
                 <tr>
                   <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;"
-                      href="http://petsmatches.com/mail/<%= user.login_userDB_id %>?category=<%=data.category%>&&userdbid=<%=user._id%>&&name=<%=user.fullName%>&&adspic=<%=image._id%>">Matches</a> </button>
+                      href="https://petsmatches.com/mail/<%= user.login_userDB_id %>?category=<%=data.category%>&&userdbid=<%=user._id%>&&name=<%=user.fullName%>&&adspic=<%=image._id%>">Matches</a> </button>
 
                 </tr>
               </table>
@@ -193,7 +193,7 @@
         $("#submitSearch").click(function(event) {
           event.preventDefault();
           var param = $("#searchValue").val();
-          window.location.replace("http://petsmatches.com/searchresult/" + param);
+          window.location.replace("https://petsmatches.com/searchresult/" + param);
         });
 
 
@@ -218,7 +218,7 @@
             redirect: 'follow'
           };
 
-          fetch("http://petsmatches.com/notefy/" + checkIf, requestOptions)
+          fetch("https://petsmatches.com/notefy/" + checkIf, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -236,7 +236,7 @@
               redirect: 'follow'
             };
 
-            fetch("http://petsmatches.com/notefy/" + checkIf, requestOptions)
+            fetch("https://petsmatches.com/notefy/" + checkIf, requestOptions)
               .then(response => response.text())
               .then(result => console.log(result))
               .catch(error => console.log('error', error));
