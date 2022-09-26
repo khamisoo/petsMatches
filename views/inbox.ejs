@@ -101,7 +101,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
               </div>
               <li class="contact-list-item">
 
-                <a class="disabled" href="http://localhost:3000/mail/<%=chatBuddies.login_userDB_id %>?category=Dogs&&userdbid=<%= chatBuddies._id %>&&name=<%=chatBuddies.fullName %>&&adspic=62dd7221523a5d09ff8377a6 ">
+                <a class="disabled" href="http://petsmatches.com/mail/<%=chatBuddies.login_userDB_id %>?category=Dogs&&userdbid=<%= chatBuddies._id %>&&name=<%=chatBuddies.fullName %>&&adspic=62dd7221523a5d09ff8377a6 ">
                   <span class="pro-pic">
                     <img class="circle-img-inbox" src="/<%=chatBuddies.Photo_URL %> " <%=chatBuddies.img.contentType %> ;base64, alt="">
                     <%  if (row.inbox.creator.sender_User_Id === chatBuddies.login_userDB_id ) {  %>
@@ -187,7 +187,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
 
         <div class="email-desc-wrapper" style="margin:0px; padding:0px; width: 100%; border-top-style:none;">
 
-          <iframe id="iframe" class="frameInbox" src="http://localhost:3000/mail/62dd71ce523a5d09ff83778f?category=Dogs&&userdbid=62dd71fc523a5d09ff83779c&&name=Mohamed%20Aly&&adspic=62dd7221523a5d09ff8377a6" width="100%" height="100%"></iframe>
+          <iframe id="iframe" class="frameInbox" src="http://petsmatches.com/mail/62dd71ce523a5d09ff83778f?category=Dogs&&userdbid=62dd71fc523a5d09ff83779c&&name=Mohamed%20Aly&&adspic=62dd7221523a5d09ff8377a6" width="100%" height="100%"></iframe>
 
         </div>
 
@@ -200,7 +200,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
       console.log("clicked");
       var param = mood.delegateTarget.value;
       console.log(param);
-      var url = "http://localhost:3000/inbox/" + param;
+      var url = "http://petsmatches.com/inbox/" + param;
       var myHeaders = new Headers();
       myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
       var urlencoded = new URLSearchParams();
@@ -223,7 +223,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
     $(".unFollow").click(async (on) => {
       var param = on.delegateTarget.value;
       console.log(param);
-      var url = "http://localhost:3000/inbox/" + param;
+      var url = "http://petsmatches.com/inbox/" + param;
       var myHeaders = new Headers();
       myHeaders.append("Cookie", "connect.sid=s%3A2LWGw_XzJvDZqhlJ9bhRbqjuqPb6z4j9.jD%2BC1QXImQZ8krlD4j2yV8QMFBV2Lt3yuIcy4LfWV78");
       var urlencoded = new URLSearchParams();

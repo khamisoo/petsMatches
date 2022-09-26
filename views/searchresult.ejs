@@ -70,11 +70,11 @@
               <p class="cardinfo1"><span> Location :</span><%=usersDb[i].governorate_name%></p>
               <table>
                 <tr>
-                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/visit/<%= petDb[k].userID %>">Profile</a> </button>
+                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://petsmatches.com/visit/<%= petDb[k].userID %>">Profile</a> </button>
 
                 </tr>
                 <tr>
-                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/mail/<%= usersDb[i].login_userDB_id %>?category=<%=petDb[k].category%>&&userdbid=<%= usersDb[i]._id%>&&name=<%= usersDb[i].fullName%>&&adspic=<%=petPicsDb[h]._id%>">Matches</a> </button>
+                  <button class="btnCard"  type="submit" id="viewProfile" ><a style="color: #000000; text-decoration:none;" href="http://petsmatches.com/mail/<%= usersDb[i].login_userDB_id %>?category=<%=petDb[k].category%>&&userdbid=<%= usersDb[i]._id%>&&name=<%= usersDb[i].fullName%>&&adspic=<%=petPicsDb[h]._id%>">Matches</a> </button>
 
                 </tr>
               </table>

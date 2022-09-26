@@ -64,7 +64,7 @@
 
               <%  }else if(ok.type === "follow"){ %>
 
-              <a class="dropdown-item waves-effect waves-light clicked" href="http://localhost:3000/visit/<%= ok.eventCreator %>">
+              <a class="dropdown-item waves-effect waves-light clicked" href="http://petsmatches.com/visit/<%= ok.eventCreator %>">
                 <span class="badge badge-danger ml-2">
                   <span style="font-weight:bolder; color:black;">Hey ! you have a <%=ok.type%> tap and view his profile</span> <br>
                   <span class="badge badge ml-2">
@@ -166,12 +166,12 @@
               <p class="cardinfo1"><span> Location :</span><%=user.governorate_name%> / <%=user.city_name%> </p>
               <table>
                 <tr>
-                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;" href="http://localhost:3000/visit/<%= data.userID %>">Profile</a> </button>
+                  <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;" href="http://petsmatches.com/visit/<%= data.userID %>">Profile</a> </button>
 
                 </tr>
                 <tr>
                   <button class="btnCard" type="submit" id="viewProfile"><a style="color: #000000; text-decoration:none;"
-                      href="http://localhost:3000/mail/<%= user.login_userDB_id %>?category=<%=data.category%>&&userdbid=<%=user._id%>&&name=<%=user.fullName%>&&adspic=<%=image._id%>">Matches</a> </button>
+                      href="http://petsmatches.com/mail/<%= user.login_userDB_id %>?category=<%=data.category%>&&userdbid=<%=user._id%>&&name=<%=user.fullName%>&&adspic=<%=image._id%>">Matches</a> </button>
 
                 </tr>
               </table>
@@ -193,7 +193,7 @@
         $("#submitSearch").click(function(event) {
           event.preventDefault();
           var param = $("#searchValue").val();
-          window.location.replace("http://localhost:3000/searchresult/" + param);
+          window.location.replace("http://petsmatches.com/searchresult/" + param);
         });
 
 
@@ -218,7 +218,7 @@
             redirect: 'follow'
           };
 
-          fetch("http://localhost:3000/notefy/" + checkIf, requestOptions)
+          fetch("http://petsmatches.com/notefy/" + checkIf, requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
@@ -236,7 +236,7 @@
               redirect: 'follow'
             };
 
-            fetch("http://localhost:3000/notefy/" + checkIf, requestOptions)
+            fetch("http://petsmatches.com/notefy/" + checkIf, requestOptions)
               .then(response => response.text())
               .then(result => console.log(result))
               .catch(error => console.log('error', error));
