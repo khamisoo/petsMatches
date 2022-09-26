@@ -101,7 +101,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://petsmatches.com/auth/google/local",
+  callbackURL: "https://petsmatches.com/auth/google/local",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 }, function(accessToken, refreshToken, profile, cb) {
   User.findOrCreate({
@@ -133,7 +133,7 @@ app.get('/auth/google/local',
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://petsmatches.com/auth/facebook/callback",
+    callbackURL: "https://petsmatches.com/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, cb) {
