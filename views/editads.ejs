@@ -131,12 +131,12 @@
                   //console.log(imglink);
 
                   var settings = {
-                    "url": "http://petsmatches.com/editads/" + key,
+                    "url": "https://petsmatches.com/editads/" + key,
                     "method": "DELETE",
                   };
                   $.ajax(settings).done(function(response) {
                     //  console.log(response);
-                    window.location.replace("http://petsmatches.com/editads/" + key + "?&&path=" + imglink);
+                    window.location.replace("https://petsmatches.com/editads/" + key + "?&&path=" + imglink);
                   });
                 });
               }
