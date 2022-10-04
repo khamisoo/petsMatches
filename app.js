@@ -58,7 +58,7 @@ var upload = multer({
     storage: multerS3({
         s3: s3,
         acl: 'public-read',
-        bucket: 'bucket-name',
+        bucket:process.env.S3_BUCKET,
         key: function (req, file, cb) {
             console.log(file);
             cb(null, file.originalname+Date.now()); //use Date.now() for unique file keys
