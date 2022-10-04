@@ -19,6 +19,8 @@ const cityData = require("./city.json");
 const govurnementData = require("./govurnement.json");
 const http = require('node:http');
 const aws = require('aws-sdk');
+const { S3Client } = require('@aws-sdk/client-s3')
+const multerS3 = require('multer-s3')
 
 
 // --                            -------      access files Ejs / static files      ------------
@@ -29,6 +31,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 app.use('/uploads', express.static('uploads'));
+const s3 = new S3Client()
 
 // -----------------------------      sessiion setup ---------------------------------
 
@@ -45,7 +48,7 @@ app.use(passport.session());
 mongoose.connect("mongodb+srv://admin-khamis:test123@cluster0.fx1mhof.mongodb.net/petsMatches");
 
 //--                                        --   FS setup with MULTER for UPloading ----------------
-
+/*
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads')
@@ -54,6 +57,7 @@ let storage = multer.diskStorage({
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
   }
 });
+
 let fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true)
@@ -62,14 +66,20 @@ let fileFilter = (req, file, cb) => {
       message: 'unsupported file format'
     }, false)
   }
-}
-let upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024
-  },
-  fileFilter: fileFilter
-});
+}*/
+
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'matchesimgs',
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString())
+    }
+  })
+})
 
 const PetPic = require('./public/index.js');
 
@@ -1492,6 +1502,7 @@ app.post("/login", function(req, res) {
   });
 
 });
+
 
 
 app.post('/profile', upload.single('image'), (req, res, next) => {
