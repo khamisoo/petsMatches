@@ -53,25 +53,6 @@ app.use(passport.session());
 mongoose.connect("mongodb+srv://admin-khamis:test123@cluster0.fx1mhof.mongodb.net/petsMatches");
 
 //--                                        --   FS setup with MULTER for UPloading ----------------
-/*
-let storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-  }
-});
-
-let fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true)
-  } else {
-    cb({
-      message: 'unsupported file format'
-    }, false)
-  }
-}*/
 
 var upload = multer({
     storage: multerS3({
@@ -1498,7 +1479,7 @@ app.post('/profile', upload.array('image', 3), (req, res, next) => {
     } else {
       var method = 0;
     }
-    req.image.map(function(file) {
+    req.files.map(function(file) {
                 profileImg_loc=file.location;
             });
     const newPerson = new Person({
