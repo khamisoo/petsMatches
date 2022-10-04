@@ -53,12 +53,13 @@ app.use(passport.session());
 mongoose.connect("mongodb+srv://admin-khamis:test123@cluster0.fx1mhof.mongodb.net/petsMatches");
 
 //--                                        --   FS setup with MULTER for UPloading ----------------
+const path = uniqid();
 
 var upload = multer({
     storage: multerS3({
         s3: s3,
         acl: 'public-read',
-        bucket:process.env.S3_BUCKET,
+        bucket:matchesimgs,
         key: function (req, file, cb) {
             console.log(file);
             cb(null, file.originalname+Date.now()); //use Date.now() for unique file keys
