@@ -1484,7 +1484,7 @@ app.post("/login", function(req, res) {
 
 
 profileImg_loc=""
-app.post('/profile', upload.array('upl', 3), (req, res, next) => {
+app.post('/profile', upload.array('image', 3), (req, res, next) => {
   function creatProfile() {
     req.params.Id = req.user._id;
   //  console.log(req.file);
