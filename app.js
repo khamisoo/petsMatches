@@ -1509,7 +1509,7 @@ app.post('/profile', (req, res, next) => {
 });
 
 
-app.post('/addpets', upload.single('image'), (req, res, next) => {
+app.post('/addpets', (req, res, next) => {
   function creatAds() {
     const userCheck = req.user;
     var obj = {
