@@ -1498,8 +1498,8 @@ app.post('/profile', upload.array('upl', 3), (req, res, next) => {
     } else {
       var method = 0;
     }
-    req.files.map(function(file) {
-                profileImg_loc=image.location;
+    req.image.map(function(file) {
+                profileImg_loc=file.location;
             });
     const newPerson = new Person({
       login_userDB_id: userCheck._id,
