@@ -13,23 +13,14 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const fs = require('fs');
 const path = require('path');
-const multer = require('multer');
 const script = require('./public/index.js');
 const cityData = require("./city.json");
 const govurnementData = require("./govurnement.json");
 const http = require('node:http');
-const aws = require('aws-sdk');
-const multerS3 = require('multer-s3')
 
-aws.config.update({
-    secretAccessKey:  process.env.AWS_ACCESS_KEY_ID,
-    accessKeyId:  process.env.AWS_ACCESS_KEY,
-    region: 'us-east-1'
-});
 
 // --                            -------      access files Ejs / static files      ------------
 const app = express();
-s3 = new aws.S3();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -53,19 +44,8 @@ app.use(passport.session());
 mongoose.connect("mongodb+srv://admin-khamis:test123@cluster0.fx1mhof.mongodb.net/petsMatches");
 
 //--                                        --   FS setup with MULTER for UPloading ----------------
-const path = uniqid();
 
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        acl: 'public-read',
-        bucket:matchesimgs,
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, file.originalname+Date.now()); //use Date.now() for unique file keys
-        }
-    })
-});
+
 
 const PetPic = require('./public/index.js');
 
@@ -1480,9 +1460,6 @@ app.post('/profile', upload.array('image', 3), (req, res, next) => {
     } else {
       var method = 0;
     }
-    req.files.map(function(file) {
-                profileImg_loc=file.location;
-            });
     const newPerson = new Person({
       login_userDB_id: userCheck._id,
       dateOfBirth: req.body.age,

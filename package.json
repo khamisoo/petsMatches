@@ -12,7 +12,6 @@
     "node": "v16.15.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.895.0",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
@@ -20,8 +19,6 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.4.6",
     "mongoose-findorcreate": "^3.0.0",
-    "multer": "^1.4.2",
-    "multer-s3": "^2.9.0",
     "nodemon": "^2.0.18",
     "passport": "^0.5.2",
     "passport-facebook": "^3.0.0",
