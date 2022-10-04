@@ -8,10 +8,11 @@
   },
   "author": "Khamisoo",
   "license": "ISC",
-  "engine":{
-    "node":"v16.15.1"
+  "engine": {
+    "node": "v16.15.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.1228.0",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",

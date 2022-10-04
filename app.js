@@ -18,6 +18,7 @@ const script = require('./public/index.js');
 const cityData = require("./city.json");
 const govurnementData = require("./govurnement.json");
 const http = require('node:http');
+const aws = require('aws-sdk');
 
 
 // --                            -------      access files Ejs / static files      ------------
@@ -1280,6 +1281,10 @@ app.get("/deleteacc", (req, res) => {
 });
 
 // -----------------------------------------------  ROUTS . POST ----------------------------------------------------
+const S3_BUCKET = process.env.S3_BUCKET;
+aws.config.region = 'eu-west-1';
+
+
 app.post("/verifying", (req, res) => {
 
   User.findOne({
