@@ -1505,7 +1505,7 @@ app.post("/login", function(req, res) {
 
 
 
-app.post('/profile', upload.single('image'), (req, res, next) => {
+app.post('/profile', upload.array('photos', 3), (req, res, next) => {
   function creatProfile() {
     req.params.Id = req.user._id;
   //  console.log(req.file);
