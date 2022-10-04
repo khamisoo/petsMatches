@@ -80,7 +80,7 @@ var upload = multer({
         bucket: 'bucket-name',
         key: function (req, file, cb) {
             console.log(file);
-            cb(null, file.originalname); //use Date.now() for unique file keys
+            cb(null, file.originalname+Date.now()); //use Date.now() for unique file keys
         }
     })
 });
@@ -1499,7 +1499,7 @@ app.post('/profile', upload.array('upl', 3), (req, res, next) => {
       var method = 0;
     }
     req.files.map(function(file) {
-                profileImg_loc=file.location;
+                profileImg_loc=image.location;
             });
     const newPerson = new Person({
       login_userDB_id: userCheck._id,
