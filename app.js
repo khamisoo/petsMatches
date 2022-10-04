@@ -19,19 +19,24 @@ const cityData = require("./city.json");
 const govurnementData = require("./govurnement.json");
 const http = require('node:http');
 const aws = require('aws-sdk');
-const { S3Client } = require('@aws-sdk/client-s3')
 const multerS3 = require('multer-s3')
 
+aws.config.update({
+    secretAccessKey:  process.env.AWS_ACCESS_KEY_ID,
+    accessKeyId:  process.env.AWS_ACCESS_KEY,
+    region: 'us-east-1'
+});
 
 // --                            -------      access files Ejs / static files      ------------
 const app = express();
+s3 = new aws.S3();
+
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(express.static("public"));
 app.use('/uploads', express.static('uploads'));
-const s3 = new S3Client()
 
 // -----------------------------      sessiion setup ---------------------------------
 
@@ -68,18 +73,17 @@ let fileFilter = (req, file, cb) => {
   }
 }*/
 
-const upload = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: 'matchesimgs',
-    metadata: function (req, file, cb) {
-      cb(null, {fieldName: file.fieldname});
-    },
-    key: function (req, file, cb) {
-      cb(null, Date.now().toString())
-    }
-  })
-})
+var upload = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: 'public-read',
+        bucket: 'bucket-name',
+        key: function (req, file, cb) {
+            console.log(file);
+            cb(null, file.originalname); //use Date.now() for unique file keys
+        }
+    })
+});
 
 const PetPic = require('./public/index.js');
 
@@ -1290,34 +1294,9 @@ app.get("/deleteacc", (req, res) => {
   }
 });
 
-const S3_BUCKET = process.env.S3_BUCKET;
-aws.config.region = 'eu-west-1';
 
-app.get('/sign-s3', (req, res) => {
-  const s3 = new aws.S3();
-  const fileName = req.query['file-name'];
-  const fileType = req.query['file-type'];
-  const s3Params = {
-    Bucket: S3_BUCKET,
-    Key: fileName,
-    Expires: 60,
-    ContentType: fileType,
-    ACL: 'public-read'
-  };
 
-  s3.getSignedUrl('putObject', s3Params, (err, data) => {
-    if(err){
-      console.log(err);
-      return res.end();
-    }
-    const returnData = {
-      signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    };
-    res.write(JSON.stringify(returnData));
-    res.end();
-  });
-});
+
 // -----------------------------------------------  ROUTS . POST ----------------------------------------------------
 
 
@@ -1504,8 +1483,8 @@ app.post("/login", function(req, res) {
 });
 
 
-
-app.post('/profile', upload.array('photos', 3), (req, res, next) => {
+profileImg_loc=""
+app.post('/profile', upload.array('upl', 3), (req, res, next) => {
   function creatProfile() {
     req.params.Id = req.user._id;
   //  console.log(req.file);
@@ -1519,7 +1498,9 @@ app.post('/profile', upload.array('photos', 3), (req, res, next) => {
     } else {
       var method = 0;
     }
-
+    req.files.map(function(file) {
+                profileImg_loc=file.location;
+            });
     const newPerson = new Person({
       login_userDB_id: userCheck._id,
       dateOfBirth: req.body.age,
@@ -1532,11 +1513,7 @@ app.post('/profile', upload.array('photos', 3), (req, res, next) => {
       accountStatus: 2,
       governorate_name: req.body.userGovurnement,
       city_name: req.body.userCity,
-      img: {
-        data: toString(fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))),
-        imageID: req.file.size + req.file.filename,
-        ImageLink: req.file.path
-      },
+      ImageLink: profileImg_loc,
       Photo_URL: req.file.path, //{/uploades/soertelbaniadamelgamedneek.png}
       facebookID: userCheck.facebookId,
       GoogleID: userCheck.googleId,
