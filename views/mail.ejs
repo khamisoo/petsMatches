@@ -38,7 +38,7 @@
                 <div class="top userCardTop">
                   <img style="width:100%; position:relative;bottom:40px;" src="/css/images/blob.png">
                   <!--
-                  <img class="circle-imgUser" src="/<%=user.Photo_URL%>" <%=user.img.contentType%>;base64,>
+                  <img class="circle-imgUser" src="/<%=user.Photo_URL%>";base64,>
 
                      -->
 
@@ -157,7 +157,7 @@
                       <input type="hidden" id="reciverInbox" value="<%=reciverRes%>">
 
                       <span class="ks-avatar ks-offline">
-                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="<%=reciverdata.Photo_URL %> " <%=reciverdata.img.contentType %> ;base64, alt="">
+                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="<%=reciverdata.Photo_URL %> " ;base64, alt="">
                       </span>
                       <div class="ks-body">
                         <div class="ks-header">
@@ -184,7 +184,7 @@
                     <% userChat.inbox.creator.messageCreated.forEach( (creat) => { %>
                     <li class="ks-item ks-from">
                       <span class="ks-avatar ks-online">
-                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="<%=user.Photo_URL %> " <%=user.img.contentType %> ;base64, alt="">
+                        <img width="36" height="36" class="rounded-circle" class="circle-img" src="<%=user.Photo_URL %> ";base64, alt="">
                       </span>
 
                       <div class="ks-body">
@@ -260,7 +260,7 @@
 
               <div class="ks-item ks-user">
                 <span class="ks-avatar ks-online pro-pic">
-                  <img width="36" height="36" class=" circle-img" src="<%=reciverdata.Photo_URL %> " <%=reciverdata.img.contentType %> ;base64, alt="">
+                  <img width="36" height="36" class=" circle-img" src="<%=reciverdata.Photo_URL %> ";base64, alt="">
                 </span>
                 <span class="ks-name">
                   <%=reciverdata.city_name %>

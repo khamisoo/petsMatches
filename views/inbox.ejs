@@ -103,7 +103,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
 
                 <a class="disabled" href="https://petsmatches.com/mail/<%=chatBuddies.login_userDB_id %>?category=Dogs&&userdbid=<%= chatBuddies._id %>&&name=<%=chatBuddies.fullName %>&&adspic=62dd7221523a5d09ff8377a6 ">
                   <span class="pro-pic">
-                    <img class="circle-img-inbox" src="<%=chatBuddies.Photo_URL %> " <%=chatBuddies.img.contentType %> ;base64, alt="">
+                    <img class="circle-img-inbox" src="<%=chatBuddies.Photo_URL %> " ;base64, alt="">
                     <%  if (row.inbox.creator.sender_User_Id === chatBuddies.login_userDB_id ) {  %>
 
                     <%  if( row  === null ){ %>
@@ -148,7 +148,7 @@ background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.p
               <li class="email-list-item">
                 <div class="recipient">
 
-                  <img class="circle-img-inbox" src="<%=chatBuddies.Photo_URL %> " <%=chatBuddies.img.contentType %> ;base64, alt=""> <i class="inactive">&nbsp;</i>
+                  <img class="circle-img-inbox" src="<%=chatBuddies.Photo_URL %> ";base64, alt=""> <i class="inactive">&nbsp;</i>
                   <a href="#" class="recipient-name"><%=chatBuddies.fullName %></a>
                 </div>
                 <a href="#" class="email-subject"> <%=row.inbox.reciver.messageReciver%> <i class="starred"> </i></a>

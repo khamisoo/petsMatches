@@ -71,7 +71,7 @@
 
     <div class="cardV cardUser">
       <div class="top userCardTop">
-        <img class="circle-imgUser" src="<%=profileData.Photo_URL%>" <%=profileData.img.contentType%>;base64,>
+        <img class="circle-imgUser" src="<%=profileData.Photo_URL%>" ;base64,>
       </div>
       <div class="bottom bottomUser">
         <div class="info">
@@ -95,7 +95,7 @@
           <%  if(i===k){ %>
           <div id="run" class="carousel-item active  container-fluid  ">
             <h2 class="carusol-color">My pet : <% ads[i].SpecialMarks%> it's age is: <%=ads[i].age%> years and its Health like: <%=ads[i].Health%> </h2>
-            <img class="petsImg" src="<%=ads[i].petPic_Link%>" <%=pics[k].contentType%>;base64,>
+            <img class="petsImg" src="<%=ads[i].petPic_Link%>" ;base64,>
             <em class="carusol-color"> Category : <%=ads[i].category%></em>
             <div class="userbtn">
               <button class="btnCard" type="button" name="button"><a style="  color: #231955; text-decoration:none" href="/editads/<%= ads[i].userID %>"> Mange your Ads</a></button>

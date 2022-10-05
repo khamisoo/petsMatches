@@ -86,7 +86,7 @@
 
               <tr>
                 <form class="" action="/editads/<%=row.userID%>" method="post" id="tableForm-<%= row._id %>">
-                  <td> <img class="circle-img" src="<%=row.petPic_Link%>" <%=pic.contentType%>;base64,></td>
+                  <td> <img class="circle-img" src="<%=row.petPic_Link%>";base64,></td>
                   <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedCategory" value="<%= row.category %>" disabled></td>
                   <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedAge" value="<%= row.age %>" disabled></td>
                   <td><input style="text-align:center;" class="inputDisabled tableEdit" type="text" name="updatedHealth" value="<%= row.Health %>" disabled></td>
