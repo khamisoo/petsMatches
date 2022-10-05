@@ -1471,8 +1471,7 @@ app.post('/profile', (req, res, next) => {
       accountStatus: 2,
       governorate_name: req.body.userGovurnement,
       city_name: req.body.userCity,
-      ImageLink: profileImg_loc,
-      Photo_URL: req.file.path, //{/uploades/soertelbaniadamelgamedneek.png}
+      Photo_URL:req.body.avatar_url, //{/uploades/soertelbaniadamelgamedneek.png}
       facebookID: userCheck.facebookId,
       GoogleID: userCheck.googleId,
 
@@ -1514,13 +1513,10 @@ app.post('/addpets', (req, res, next) => {
     var obj = {
       name: req.body.petsCategory,
       user_db_id: userCheck._id,
-      imageLink: req.file.path,
-      img: {
-        data: toString(fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename))),
-      }
+      imageLink: req.body.avatar_url,
     };
     PetPic.find({
-      imageLink: req.file.path
+      imageLink:req.body.avatar_url
     }, (err, on) => {
       if (err) {
         console.log(err);
