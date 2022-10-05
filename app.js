@@ -1444,7 +1444,6 @@ app.post("/login", function(req, res) {
 });
 
 
-profileImg_loc=""
 app.post('/profile', (req, res, next) => {
   function creatProfile() {
     req.params.Id = req.user._id;
@@ -1482,7 +1481,7 @@ app.post('/profile', (req, res, next) => {
   }
   if (req.body.userName.length > 20) {
     res.render("matcheshelp", {
-      reason: " your Name must be 10 letter or less , all on Letters "
+      reason: " your Name must be 20 letter or less , all on Letters "
     });
   } else if (req.body.age > 100) {
     res.render("matcheshelp", {
