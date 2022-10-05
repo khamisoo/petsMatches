@@ -1495,7 +1495,7 @@ app.post('/profile', (req, res) => {
     res.render("matcheshelp", {
       reason: " chooseing city helps you to get perfect matches  ,,"
     });
-  } else if (req.file) {
+  } else if (req.body.avatar_url) {
     creatProfile();
   } else {
     res.render("matcheshelp", {
@@ -1563,7 +1563,7 @@ app.post('/addpets', (req, res) => {
     res.render("matcheshelp", {
       reason: " just you can write 100 Letters for Health   ,,   "
     });
-  } else if (req.file) {
+  } else if (req.body.avatar_url) {
     creatAds();
   } else {
     res.render("matcheshelp", {
