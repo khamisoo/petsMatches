@@ -206,8 +206,8 @@ height:350px;
   margin: 20px 10px;
 }
 
-@media screen and (max-width: 600px) {
-.row{
+@media (max-width: 600px) {
+#find_page_row{
   margin-left:25%;
 }
 #addPet_row{
