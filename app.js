@@ -1444,7 +1444,7 @@ app.post("/login", function(req, res) {
 });
 
 
-app.post('/profile', (req, res, next) => {
+app.post('/profile', (req, res) => {
   function creatProfile() {
     req.params.Id = req.user._id;
   //  console.log(req.file);
@@ -1506,7 +1506,7 @@ app.post('/profile', (req, res, next) => {
 });
 
 
-app.post('/addpets', (req, res, next) => {
+app.post('/addpets', (req, res) => {
   function creatAds() {
     const userCheck = req.user;
     var obj = {
