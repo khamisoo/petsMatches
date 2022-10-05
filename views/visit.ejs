@@ -25,11 +25,10 @@
 </head>
 
 <body style="margin:0px;">
-  <div class="container-fluid" style="margin-top:0px; background-color:#F6F6F6; width:1200px; height:700px;">
+  <div class="container-fluid  visit_user" style="margin-top:0px; background-color:#F6F6F6; width:1200px; height:700px;">
     <div style="position:relative;bottom:100px; right:180px;background-color:#ff4c68; width:150%">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="/"> <img style="zoom:40%;" class="brand" src="/css/images/blob.png" /></a>
-        <div class="userTools">
           <ul class="ul-findP">
             <li class="nav-item">
               <a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
@@ -41,10 +40,9 @@
               <a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a>
             </li>
           </ul>
-        </div>
       </nav>
     </div>
-    <div class="userHeader">
+    <div class="userHeader  specify">
 
       <div class="userH">
 
@@ -66,12 +64,12 @@
 
       </div>
     </div>
-    <div class="cardV cardUser">
+    <div class="cardV cardUser  visit_user">
       <div class="top userCardTop">
           <img class="circle-imgUser" src="<%=profileData.Photo_URL%>" ;base64,>
       </div>
-      <div class="bottom bottomUser">
-        <div class="info">
+      <div class="bottom bottomUser  visit_botom">
+        <div class="info visit_botom">
           <p> <span> Name : </span> <%=profileData.fullName %> <p>
           <%  if (profileData.numberValidation === "YES"){  %>
               <p> <span>Number :</span> <%=profileData.phone %> </p>

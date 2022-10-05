@@ -237,7 +237,45 @@ height:350px;
     position: static;
     transform: rotate(0);
   }
+
 }
+
+
+
+/* make some page more responsive in mob */
+@media screen and (max-width: 600px) {
+#find_page_row{
+  margin-left:25%;
+}
+#addPet_row{
+  height: 100%;
+
+}
+.visit_user{
+  height: 100%;
+}
+.visit_botom{
+  margin-bottom: 240px;
+}
+.specify{
+  position: relative;top: 300px;
+}
+#inbox_rows{
+width: 130%;
+
+}
+.email-list-wrapper{
+  display: none;
+}
+.email-toolbars-wrapper{
+  display: block;
+}
+
+
+
+}
+
+
 
 
 /*  Find page    */

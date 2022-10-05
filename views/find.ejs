@@ -32,7 +32,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-5" aria-controls="navbarSupportedContent-5" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent-5">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-5" style="position:relative;bottom:100px;">
 
         <ul class="navbar-nav ml-auto nav-flex-icons">
 
@@ -130,7 +130,7 @@
   background-image: url('https://www.transparenttextures.com/patterns/fresh-snow.png');   position:relative;bottom:40px;">
 
 
-    <div class="row">
+    <div class="row" id="find_page_row">
 
       <% usersDb.forEach(function(user,userIndex) { %>
       <% petDb.forEach(function(data,petIndex) { %>
@@ -143,7 +143,7 @@
         <div class="cardV">
           <div class="top">
             <h2 class="name"><%=user.fullName%></h2>
-            <img class="circle-img" src="<%=user.Photo_URL%>";base64,>
+            <img class="circle-img" src="<%=user.Photo_URL%>" ;base64,>
           </div>
           <div class="bottom">
             <div class="info">
@@ -189,7 +189,6 @@
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script type="text/javascript">
-
         $("#submitSearch").click(function(event) {
           event.preventDefault();
           var param = $("#searchValue").val();
