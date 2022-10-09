@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
   <!--  All snippets are MIT license http://bootdey.com/license -->
-  <title>Responsive Parallax Navbar - Bootdey.com</title>
+  <title>Pets Matches</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -26,12 +26,18 @@
 
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <a class="navbar-brand" href="/"> <img style="zoom:10%;" class="brand" src="/css/images/blob.png" /></a>
 
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
+          <li class="breadcrumb-item">
+            <a style="  color: #231955;" class="nav-link" href="/logout">logout</a>
           </li>
-          <li class="breadcrumb-item"><a style="  color: #231955;" href="/find">Find</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a></li>
+          <li class="breadcrumb-item">
+            <a style="  color: #231955;" href="/find">Find</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            <a style="  color: #231955;" class="nav-link" href="/addpets">Add Pets</a>
+          </li>
         </ol>
       </nav>
       <!-- /Breadcrumb -->
@@ -91,14 +97,17 @@
                     <div class="blog-table">
                       <h6 class="blog-category blog-text-success"><i class="far fa-newspaper"></i> News</h6>
                       <h4 class="blog-card-caption">
-                        <a href="#">>My pet : <% ads[i].SpecialMarks%> it's age is: <%=ads[i].age%> years and its Health like: <%=ads[i].Health%></a>
+                        <a href="#"> My pet : <% ads[i].SpecialMarks%> it's age is: <%=ads[i].age%> years and its Health like: <%=ads[i].Health%></a>
                       </h4>
                       <p class="blog-card-description"> Category : <%=ads[i].category%>.</p>
                       <div class="ftr">
                         <div class="author">
                           <a href="#"> <img src="<%=profileData.Photo_URL%>" alt="..." class="avatar img-raised"> <span>Lorem</span> </a>
                         </div>
-                        <div class="stats"> <i class="far fa-clock"></i> <button class="btnCard" type="button" name="button"><a style="  color: #231955; text-decoration:none" href="/editads/<%= ads[i].userID %>"> Mange your Ads</a></button>
+                        <div class="stats">
+                           <button class="btnCard" type="button" name="button">
+                          <a style="  color: #231955; text-decoration:none" href="/editads/<%= ads[i].userID %>"> Mange your Ads</a>
+                        </button>
                         </div>
                       </div>
                     </div>
