@@ -408,7 +408,7 @@ app.route("/city/:dataId")
       } else {
         //  console.log(docs)
         City.find({
-          governorate_id: docs.id
+          governorate_id:docs.id
         }, (err, found) => {
           if (err) {
             console.log(err)
